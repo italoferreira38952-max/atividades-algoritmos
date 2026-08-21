@@ -1,30 +1,66 @@
 #include <stdio.h>
 
+void aplicar_dano(int *vida, int dano) {
+    if (!vida) return;
+    *vida = *vida - dano;
+}
+
+void restaurar_vida(int *vida) {
+    if (!vida) return;
+    *vida = *vida + 20;
+}
+
+void aplicar_pontuacao_dupla(int *pontuacao) {
+    if (!pontuacao) return;
+    *pontuacao = *pontuacao * 2;
+}
+
 int main() {
-    int a[5] = {1, 2, 3, 4, 5};  
-    int *vetor = a;              
-    int pontuacao = 0;
+    int vida = 100;
+    int tesouro = 0;
+    int pontuacao = 50;
+
+    int *pvida = &vida;
+    int *ptesouro = &tesouro;
+    int *ppontuacao = &pontuacao;
+
+    int plataformas[5] = {3, 7, 2, 9, 1};
+    int *vetor = plataformas;
+
+    printf("=== ESTADO INICIAL ===\n");
+    printf("Vida: %d\n", vida);
+    printf("Pontuacao: %d\n", pontuacao);
+
+    // Demonstração das funções anteriores
+    aplicar_dano(pvida, 15);
+    restaurar_vida(pvida);
+    aplicar_pontuacao_dupla(ppontuacao);
+    *ptesouro = 1;
+
+    printf("\nApos funcoes: Vida = %d | Pontuacao = %d | Tesouro = %d\n", vida, pontuacao, tesouro);
+
+    /*
+     * O deslocamento (vetor + i) respeita o tipo do ponteiro porque o compilador
+     * multiplica i pelo tamanho do tipo (sizeof(int)). Assim:
+     * vetor + 0 → primeiro elemento
+     * vetor + 1 → avança sizeof(int) bytes
+     * e assim por diante.
+     */
+
+    printf("\n=== PERCORRENDO PLATAFORMAS ===\n");
+    printf("Indice | Endereco          | Valor\n");
+
+    int pontuacao_mapa = 0;
     int altura = 0;
-    // O deslocamento vetor + i respeita o tipo do ponteiro porque o compilador
-// leva em conta o tamanho do tipo que o ponteiro está apontando.
-// Como o vetor é um ponteiro pra int (int*), ele multiplica o valor de i
-// pelo tamanho de um int (que geralmente é 4 bytes).
-// Por isso:
-// - vetor + 0 aponta pro primeiro elemento
-// - vetor + 1 aponta pro segundo (avança 4 bytes)
-// - vetor + 2 aponta pro terceiro (avança 8 bytes)
-// e assim por diante.
-// Dessa forma a aritmética de ponteiros sempre acessa a posição certa
-// do vetor, respeitando o tipo do dado.
 
-    printf("indice | Endereco      | Valor\n");
-    for(int i = 0; i < 5; i++) {
-        printf("%d      | %p | %d\n", i, (void*)(vetor + i), *(vetor + i));
-
-        pontuacao += *(vetor + i);     
-            altura += *(vetor + i);            
+    for (int i = 0; i < 5; i++) {
+        printf("%d      | %p | %d\n", i, (void *)(vetor + i), *(vetor + i));
+        pontuacao_mapa += *(vetor + i);
+        altura += *(vetor + i);
     }
-    printf("\nPontuacao final: %d\n", pontuacao);
+
+    printf("\nPontuacao do mapa: %d\n", pontuacao_mapa);
     printf("Altura total: %d\n", altura);
+
     return 0;
 }

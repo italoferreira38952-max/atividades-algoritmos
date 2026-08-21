@@ -1,22 +1,29 @@
 #include <stdio.h>
-int main(){
-    int vida=100;
+
+int main() {
+    int vida = 100;
+    int tesouro = 0;       
+
+    int *pvida = &vida;
+    int *ptesouro = &tesouro;
+
+    printf("=== ESTADO INICIAL ===\n");
+    printf("Vida: %d (endereco: %p)\n", vida, (void *)pvida);
+    printf("Tesouro: %d (endereco: %p)\n", tesouro, (void *)ptesouro);
     int dano;
-    int tesouro=0;
-    int *pvida=&vida;
-    int *ptesouro=&tesouro;
-    printf("===ESTADO INICIAL===\n");
-    printf("vida:%d (endereco:%p)\n", vida, pvida );
-    printf("informe o dano: \n");
+    printf("\nInforme o dano: ");
     scanf("%d", &dano);
-    printf("aplicando %d de dano...\n", dano);
-    *pvida=*pvida-dano;
-    printf("a vida atual e:%d\n", vida);
-    printf("==curando 20 de vida==\n");
-    *pvida=*pvida+20;
-     printf("a vida atual e:%d\n", vida);
-    printf("ativando tesouro...\n");
-    *ptesouro=1;
-    printf("tesouro agora:%d", tesouro);
+
+    printf("Aplicando %d de dano...\n", dano);
+    *pvida = *pvida - dano;
+    printf("Vida apos dano: %d\n", vida);
+    printf("\nCurando 20 de vida...\n");
+    *pvida = *pvida + 20;
+    printf("Vida apos cura: %d\n", vida);
+
+    printf("\nAtivando tesouro...\n");
+    *ptesouro = 1;
+    printf("Tesouro agora: %d\n", tesouro);
+
     return 0;
 }
