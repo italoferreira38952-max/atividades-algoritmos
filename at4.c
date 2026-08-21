@@ -1,29 +1,29 @@
 #include <stdio.h>
 
-void ler_mapa(int *mapa, int tamanho) {
-    printf("Digite os %d valores do mapa:\n", tamanho);
-    for (int i = 0; i < tamanho; i++) {
+void ler_mapa(int *m, int t) {
+    printf("Digite os %d valores do mapa:\n", t);
+    for (int i = 0; i < t; i++) {
         printf("Digite o valor para a posicao %d: ", i + 1);
-        scanf("%d", mapa + i);
+        scanf("%d", m + i);
     }
 }
-void mostrar_mapa(int *mapa, int tamanho) {
+void mostrar_mapa(int *m, int t) {
     printf("Valores do mapa:\n");
-    for (int i = 0; i < tamanho; i++) {
-        printf("%d ", *(mapa + i));
+    for (int i = 0; i < t; i++) {
+        printf("%d ", *(m + i));
     }
     printf("\n");
 }
 int main() {
-    int tamanho;
-    int mapa[100];
+    int t;
+    int m[100];
     printf("Digite o tamanho do mapa (1 a 100): ");
-    scanf("%d", &tamanho);
-    if (tamanho > 100 || tamanho < 1) {
+    scanf("%d", &t);
+    if (t > 100 || t < 1) {
         printf("Tamanho invalido\n");
         return 1;
     }
-    ler_mapa(mapa, tamanho);
-    mostrar_mapa(mapa, tamanho);
+    ler_mapa(m, t);
+    mostrar_mapa(m, t);
     return 0;
 }
