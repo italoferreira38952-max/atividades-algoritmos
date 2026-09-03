@@ -99,7 +99,7 @@ void alterar_item(int *inventario[], int tamanho) {
 }
 
 int main() {
-    int vida = 100;
+    int vida = 100; //&vida *vida
     int pontuacao = 50;
 
     int pocao = 10;
