@@ -384,7 +384,7 @@ void inicializarEquipe(Equipe *equipe) {
     equipe->quantidade = 0;
 
     equipe->personagens =
-        malloc(equipe->capacidade * sizeof(Personagem));
+        calloc(equipe->capacidade, sizeof(Personagem));
 }
 
 void liberarEquipe(Equipe *equipe) {
