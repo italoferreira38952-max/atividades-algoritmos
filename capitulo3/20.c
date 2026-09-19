@@ -1,3 +1,4 @@
+//removi umas funçoes que n teria utilidade, comecei a fazer elas mas acabei deixando de terminar
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -322,61 +323,6 @@ void alterarPersonagem(Equipe *equipe) {
     }
 
     printf("Personagem alterado.\n");
-}
-
-int intercalar(Personagem *A, int nA,
-               Personagem *B, int nB,
-               Personagem *C,
-               long long *comparacoes) {
-
-    int i = 0;
-    int j = 0;
-    int k = 0;
-
-    *comparacoes = 0;
-
-    while (i < nA && j < nB) {
-        (*comparacoes)++;
-
-        if (A[i].pontuacao <= B[j].pontuacao) {
-            C[k] = A[i];
-            i++;
-        } else {
-            C[k] = B[j];
-            j++;
-        }
-
-        k++;
-    }
-
-    while (j < nB) {
-        C[k] = B[j];
-        j++;
-        k++;
-    }
-
-    while (i < nA) {
-        C[k] = A[i];
-        i++;
-        k++;
-    }
-
-    return k;
-}
-
-void mergeSort(Personagem *vetor, int inicio, int fim) {
-
-    // dividir
-    if (inicio >= fim)
-        return;
-
-    int meio = inicio + (fim - inicio) / 2;
-
-    // resolver
-    mergeSort(vetor, inicio, meio);
-    mergeSort(vetor, meio + 1, fim);
-
-    // combinar
 }
 
 void inicializarEquipe(Equipe *equipe) {
