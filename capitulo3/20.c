@@ -108,8 +108,8 @@ int alterarVida(Personagem *p, int deltaVida) {
 
     int novaVida = p->vida + deltaVida;
 
-    if (novaVida < 0)
-        p->vida = 0;
+    if (novaVida < 0) 
+        p->vida = 0; //(*p).
     else if (novaVida > VIDA_MAX)
         p->vida = VIDA_MAX;
     else
