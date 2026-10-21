@@ -278,7 +278,7 @@ static int busca_bin_rec_aux(const int *v, int inicio, int fim, int alvo,
         }
         return -1; // caso-base 1
     }
-    int meio = inicio + (fim - inicio) / 2;
+    int meio = inicio + (fim - inicio) / 2; 
     if (imprimir) {
         printf("%*sinicio=%d meio=%d fim=%d -> v[%d]=%d\n",
                (nivel - 1) * 2, "", inicio, meio, fim, meio, v[meio]);
